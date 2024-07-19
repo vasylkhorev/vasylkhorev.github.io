@@ -19,7 +19,9 @@ export const thesisTranslations = [
             "whatisAR.answer1": "Association occurs when several events are interrelated. It indicates that certain data (or events found in the data) are associated with other data or events resulting from the data. For example, a study conducted in a supermarket may show that 65% of visitors who buy potato chips will also buy Coca-Cola, and if there is a discount for such a set they will buy it 85% of the time.",
             "whatisAR.answer2": "If the store has information about such an association, it is easy for managers to judge how effective the discount is." +
                 "These associations are called rules. Those that exceed a certain threshold are considered interesting. Such rules help in decision making and explanation.",
-            "class": "w-1/2 sm:w-1/5"
+            "class": "w-1/2 sm:w-1/5",
+            "chips": "\\textrm{Potato chips}",
+            "cocaCola": "\\textrm{Coca-Cola}",
         }
     },
     {
@@ -45,7 +47,9 @@ export const thesisTranslations = [
                 "            zemiakové lupienky, si kúpia aj Coca-Colu, a ak existuje zľava pre takýto súbor, kúpia si ju v 85% prípadov.",
             "whatisAR.answer2": "Takéto vyhľadávanie odhaľuje skryté súvislosti v zdanlivo nesúvisiacich údajoch. Tieto súvislosti sa nazývajú asociačné pravidlá. Tie, ktoré presahujú určitú hra\n" +
                 "            nicu, sa považujú za zaujímavé.  Takéto pravidlá dávajú možnosť prijať opatrenia na základe nájdených vzorov. Pomáhajú tiež pri rozhodovaní a vysvetľovaní.",
-            "class": "sm:w-1/3"
+            "class": "sm:w-1/3",
+            "chips": "\\textrm{Zemiakové lupienky}",
+            "cocaCola": "\\textrm{Coca-Cola}",
         }
     },
     {
@@ -71,7 +75,9 @@ export const thesisTranslations = [
                  " картопляні чіпси, також придбають кока-колу, а якщо на такий набір діє знижка, то вони придбають її у 85% випадків.",
             "whatisAR.answer2": "Такі пошуки виявляють приховані зв'язки у, здавалося б, не пов'язаних між собою даних. Ці зв'язки називаються асоціативними правилами. Ті з них, які виходять за межі конкретної гри" +
                 " вважаються цікавими.  Такі правила дають можливість діяти на основі знайдених закономірностей. Вони також допомагають у прийнятті рішень і поясненні.",
-            "class": "w-1/2 sm:w-1/5"
+            "class": "w-1/2 sm:w-1/5",
+            "chips": "\\textrm{Чіпси}",
+            "cocaCola": "\\textrm{Coca-Cola}",
         }
     },
 ];

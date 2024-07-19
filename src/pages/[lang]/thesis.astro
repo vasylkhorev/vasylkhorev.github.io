@@ -7,6 +7,7 @@ import {getLangFromUrl} from "../../i18n/utils";
 const lang  = getLangFromUrl(Astro.url);
 
 
+
 // Get the translation for the current language
 const t = getTranslation(lang);
 
@@ -24,6 +25,7 @@ export function getStaticPaths() {
     <title>{t["pageTitle"]}</title>
 </head>
 
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
 <body class="text-amber-50 bg-gray-900">
 <Header/>
@@ -70,7 +72,7 @@ export function getStaticPaths() {
                 href="https://en.wikipedia.org/wiki/Association_rule_learning">{t["whatisAR"]}</a></div>
         <div class="flex justify-center flex-col text-s sm:text-2xl my-10">
             {t["whatisAR.answer1"]}
-            <img class=`justify-self-center self-center m-5 invert ${t["class"]}` src=`/src/content/${lang}/a_rule.png`>
+            \[ \lbrace {t["cocaCola"]}  \rbrace \Rightarrow \lbrace {t["chips"]} \rbrace \]
             {t["whatisAR.answer2"]}
         </div>
     </div>
