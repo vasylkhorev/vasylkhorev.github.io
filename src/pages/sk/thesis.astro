@@ -1,0 +1,78 @@
+---
+import Navigation from "../../components/Navigation.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import "../../styles.css";
+import {getLangFromUrl} from "../../i18n/utils";
+import {Astro} from "astro/env";
+const lang = getLangFromUrl(Astro.url);
+---
+
+<html lang={lang}>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Bakalárska práca</title>
+</head>
+
+<body class="text-amber-50 bg-gray-900">
+<Header/>
+
+<div style="height: calc(100dvh - 64px - 68px)">
+    <!-- 64px is the height of the header, 68px is the height of the footer. TODO prerobit!! -->
+    <div class="items-center mx-44">
+        <h1 class="text-center font-bold  font-sans text-8xl pt-32">Metódy asociačných pravidiel a ich aplikácie</h1>
+        <p class="text-3xl mt-32 font-mono"><span class="font-semibold">Autor:</span> Vasyl Khorev</p>
+        <p class="text-3xl mt-2 font-mono"><span class="font-semibold">Vedúci práce:</span> doc. RNDr. Ľubomír Antoni,
+            PhD.</p>
+        <p class="text-3xl mt-2 font-mono"><span class="font-semibold">Konzultant:</span> prof. RNDr. Stanislav Krajči,
+            PhD.</p>
+    </div>
+    <div class="mx-44 flex justify-start mt-20 gap-10">
+        <a href="https://s.ics.upjs.sk/~vasyl_khorev/prezentacia.pdf">
+            <button type="button"
+                    class="font-mono  block rounded-md bg-gray-800 px-3 py-2 text-base font-medium text-white hover:bg-gray-700">
+                <p>Prezentácia</p></button>
+        </a>
+        <a href="https://s.ics.upjs.sk/~vasyl_khorev/esej.pdf">
+            <button type="button"
+                    class="font-mono  block rounded-md bg-gray-800 px-3 py-2 text-base font-medium text-white hover:bg-gray-700">
+                <p>Esej</p></button>
+        </a>
+        <a href="https://s.ics.upjs.sk/~vasyl_khorev/bakalarska_praca.pdf">
+            <button type="button"
+                    class="font-mono block rounded-md bg-gray-800 px-3 py-2 text-base font-medium text-white hover:bg-gray-700">
+                <p>Práca</p></button>
+        </a>
+    </div>
+</div>
+<div class="flex items-center justify-center">
+    <div class="flex flex-col w-3/4">
+        <div class="text-3xl font-bold text-center underline underline-offset-8">Ciele</div>
+        <div class="text-2xl my-10">
+            <ul class="list-outside list-disc">
+                <li>Popísať známe algoritmy pre generovanie asociačných pravidiel.</li>
+                <li>Implementovať známe algoritmy pre generovanie asociačných pravidiel a porovnať ich výhody a
+                    nevýhody.
+                </li>
+                <li>Aplikovať implementované algoritmy na vybranú údajovú sadu.</li>
+            </ul>
+        </div>
+
+        <div class="mt-10 text-3xl font-bold text-center underline underline-offset-8"><a
+                href="https://en.wikipedia.org/wiki/Association_rule_learning">Čo sú to asociačne pravidlá?</a></div>
+        <div class="flex justify-center flex-col text-2xl my-10">
+            K asociácii dochádza vtedy, keď niekoľko udalostí navzájom súvisí. Intuitívne by sme mohli asociácie popísať
+            takým spôsobom, že určité údaje (alebo udalosti nájdené v údajoch) sú spojené s inými údajmi alebo
+            udalosťami vyplývajúcimi z týchto údajov. Napríklad štúdia vykonaná v supermarkete môže ukázať, že 65% návštevníkov, ktorí si kúpili
+            zemiakové lupienky, si kúpia aj Coca-Colu, a ak existuje zľava pre takýto súbor, kúpia si ju v 85% prípadov.
+            <img class="justify-self-center self-center  m-5 w-1/2 invert" src="/src/content/sk/a_rule.png">
+            Takéto vyhľadávanie odhaľuje skryté súvislosti v zdanlivo nesúvisiacich údajoch. Tieto súvislosti sa nazývajú asociačné pravidlá. Tie, ktoré presahujú určitú hra
+            nicu, sa považujú za zaujímavé.  Takéto pravidlá dávajú možnosť prijať opatrenia na základe nájdených vzorov. Pomáhajú tiež pri rozhodovaní a vysvetľovaní.
+        </div>
+    </div>
+</div>
+
+<Footer/>
+</body>
+
+</html>

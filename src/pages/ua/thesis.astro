@@ -1,0 +1,76 @@
+---
+import Navigation from "../../components/Navigation.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import "../../styles.css";
+import {getLangFromUrl} from "../../i18n/utils";
+const lang = getLangFromUrl(Astro.url);
+---
+
+<html lang={lang}>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Бакалаврська робота</title>
+</head>
+
+<body class="text-amber-50 bg-gray-900">
+<Header/>
+
+<div style="height: calc(100dvh - 64px - 68px)">
+    <!-- 64px is the height of the header, 68px is the height of the footer. TODO prerobit!! -->
+    <div class="items-center mx-44">
+        <h1 class="text-center font-bold  font-sans text-8xl pt-32">Методи асоціативних правил і їх використання</h1>
+        <p class="text-3xl mt-32 font-mono"><span class="font-semibold">Автор:</span> Василь Хорев</p>
+        <p class="text-3xl mt-2 font-mono"><span class="font-semibold">Ведучий:</span> doc. RNDr. Ľubomír Antoni,
+            PhD.</p>
+        <p class="text-3xl mt-2 font-mono"><span class="font-semibold">Консультант:</span> prof. RNDr. Stanislav Krajči,
+            PhD.</p>
+    </div>
+    <div class="mx-44 flex justify-start mt-20 gap-10">
+        <a href="https://s.ics.upjs.sk/~vasyl_khorev/prezentacia.pdf">
+            <button type="button"
+                    class="font-mono  block rounded-md bg-gray-800 px-3 py-2 text-base font-medium text-white hover:bg-gray-700">
+                <p>Презентація</p></button>
+        </a>
+        <a href="https://s.ics.upjs.sk/~vasyl_khorev/esej.pdf">
+            <button type="button"
+                    class="font-mono  block rounded-md bg-gray-800 px-3 py-2 text-base font-medium text-white hover:bg-gray-700">
+                <p>Есей</p></button>
+        </a>
+        <a href="https://s.ics.upjs.sk/~vasyl_khorev/bakalarska_praca.pdf">
+            <button type="button"
+                    class="font-mono block rounded-md bg-gray-800 px-3 py-2 text-base font-medium text-white hover:bg-gray-700">
+                <p>Робота</p></button>
+        </a>
+    </div>
+</div>
+<div class="flex items-center justify-center">
+    <div class="flex flex-col w-3/4">
+        <div class="text-3xl font-bold text-center underline underline-offset-8">Мета роботи</div>
+        <div class="text-2xl my-10">
+            <ul class="list-outside list-disc">
+                <li>Описати відомі алгоритми генерації асоціативних правил.</li>
+                <li>Реалізувати відомі алгоритми генерації асоціативних правил та порівняти їх переваги та недоліки.
+                </li>
+                <li>Застосувати реалізовані алгоритми до обраного набору даних.</li>
+            </ul>
+        </div>
+
+        <div class="mt-10 text-3xl font-bold text-center underline underline-offset-8"><a
+                href="https://en.wikipedia.org/wiki/Association_rule_learning">Що таке асоціативні правила?</a></div>
+        <div class="flex justify-center flex-col text-2xl my-10">
+            Асоціація виникає, коли кілька подій пов'язані між собою. Інтуїтивно ми можемо описати асоціації
+            таким чином, що певні дані (або події, знайдені в даних) пов'язані з іншими даними або
+            з іншими даними або подіями, що випливають з цих даних. Наприклад, дослідження, проведене в супермаркеті, може показати, що 65% відвідувачів, які купили
+            картопляні чіпси, також придбають кока-колу, а якщо на такий набір діє знижка, то вони придбають її у 85% випадків.
+            <img class="justify-self-center self-center m-5 w-1/2 invert" src="/src/content/en/a_rule.png">
+            Такі пошуки виявляють приховані зв'язки у, здавалося б, не пов'язаних між собою даних. Ці зв'язки називаються асоціативними правилами. Ті з них, які виходять за межі конкретної гри
+            вважаються цікавими.  Такі правила дають можливість діяти на основі знайдених закономірностей. Вони також допомагають у прийнятті рішень і поясненні.
+        </div>
+    </div>
+</div>
+
+<Footer/>
+</body>
+
+</html>
