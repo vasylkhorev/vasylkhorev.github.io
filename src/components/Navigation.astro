@@ -91,11 +91,11 @@ const t = useTranslations(lang);
         const closeIcon = menuButton.querySelector('.close-icon');
 
         menuButton.addEventListener('click', function () {
-            const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
-            menuButton.setAttribute('aria-expanded', String(!isExpanded));
-            mobileMenu.classList.toggle('hidden');
-            menuIcon.classList.toggle('hidden');
-            closeIcon.classList.toggle('hidden');
+            const isExpanded = menuButton?.getAttribute('aria-expanded') === 'true';
+            menuButton?.setAttribute('aria-expanded', String(!isExpanded));
+            mobileMenu?.classList.toggle('hidden');
+            menuIcon?.classList.toggle('hidden');
+            closeIcon?.classList.toggle('hidden');
         });
     });
 </script>
