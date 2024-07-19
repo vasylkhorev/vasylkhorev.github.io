@@ -76,10 +76,10 @@ export const thesisTranslations = [
     },
 ];
 
-export function getTranslation(lang: string) {
+export function getTranslation(lang: string) : any {
     const translation = thesisTranslations.find(t => t.params.lang === lang);
     if (translation) {
         return translation.params;
     }
-    return null;
+    return thesisTranslations[0];
 }
