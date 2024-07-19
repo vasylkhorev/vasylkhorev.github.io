@@ -87,10 +87,10 @@ const t = useTranslations(lang);
     document.addEventListener('DOMContentLoaded', function () {
         const menuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
-        const menuIcon = menuButton.querySelector('.menu-icon');
-        const closeIcon = menuButton.querySelector('.close-icon');
+        const menuIcon = menuButton?.querySelector('.menu-icon');
+        const closeIcon = menuButton?.querySelector('.close-icon');
 
-        menuButton.addEventListener('click', function () {
+        menuButton?.addEventListener('click', function () {
             const isExpanded = menuButton?.getAttribute('aria-expanded') === 'true';
             menuButton?.setAttribute('aria-expanded', String(!isExpanded));
             mobileMenu?.classList.toggle('hidden');
