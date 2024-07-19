@@ -1,0 +1,82 @@
+---
+import {getTranslation, thesisTranslations} from "../../i18n/thesisTranslations";
+import {getLangFromUrl} from "../../i18n/utils";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import "../../styles.css";
+import {getLangFromUrl} from "../../i18n/utils";
+const lang  = getLangFromUrl(Astro.url);
+
+
+// Get the translation for the current language
+const t = getTranslation(lang);
+
+export function getStaticPaths() {
+    return thesisTranslations.map(t => ({ params: t.params }));
+}
+---
+
+<html lang={lang}>
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+    <meta name="viewport" content="width=device-width"/>
+    <meta name="generator" content={Astro.generator}>
+    <title>{t["pageTitle"]}</title>
+</head>
+
+
+<body class="text-amber-50 bg-gray-900">
+<Header/>
+<div class="flex flex-col content-center items-center">
+    <div class="mx-10 items-center sm:mx-44">
+        <h1 class="text-3xl text-center font-bold font-sans sm:text-8xl pt-10 sm:pt-32">{t["thesisTitle"]}</h1>
+        <p class=" text-s sm:text-3xl mt-10 sm:mt-32 font-mono"><span class="font-semibold">{t["author.label"]}:</span> {t["thesisAuthor"]}</p>
+        <p class=" text-s sm:text-3xl mt-2 font-mono"><span class="font-semibold">{t["thesis.supervisor"]}:</span> doc. RNDr. Ľubomír Antoni,
+            PhD.</p>
+        <p class="text-s sm:text-3xl mt-2 font-mono"><span class="font-semibold">{t["thesis.consultant"]}:</span> prof. RNDr. Stanislav Krajči,
+            PhD.</p>
+    </div>
+    <div class="mx-44 mt-10 inline-flex sm:justify-start sm:w-3/4 sm:mt-20 gap-10">
+           <a href="https://s.ics.upjs.sk/~vasyl_khorev/prezentacia.pdf">
+               <button type="button"
+                       class="font-mono  block rounded-md bg-gray-800 px-3 py-2 text-base font-medium text-white hover:bg-gray-700">
+                   <p>{t["presentation"]}</p></button>
+           </a>
+           <a href="https://s.ics.upjs.sk/~vasyl_khorev/esej.pdf">
+               <button type="button"
+                       class="font-mono  block rounded-md bg-gray-800 px-3 py-2 text-base font-medium text-white hover:bg-gray-700">
+                   <p>{t["essay"]}</p></button>
+           </a>
+           <a href="https://s.ics.upjs.sk/~vasyl_khorev/bakalarska_praca.pdf">
+               <button type="button"
+                       class="font-mono block rounded-md bg-gray-800 px-3 py-2 text-base font-medium text-white hover:bg-gray-700">
+                   <p>{t["thesis"]}</p></button>
+           </a>
+    </div>
+</div>
+<div class="mt-10 sm:mt-20 flex items-center justify-center">
+    <div class="flex flex-col w-3/4">
+        <div class="text-2xl sm:text-3xl font-bold text-center underline underline-offset-8">{t["goals.label"]}</div>
+        <div class="text-s sm:text-2xl mt-10">
+            <ul class="list-outside list-disc">
+                <li>{t["goals.1"]}</li>
+                <li>{t["goals.2"]}
+                </li>
+                <li>{t["goals.3"]}</li>
+            </ul>
+        </div>
+
+        <div class="mt-10 text-2xl sm:mt-20 sm:text-3xl font-bold text-center underline underline-offset-8"><a
+                href="https://en.wikipedia.org/wiki/Association_rule_learning">{t["whatisAR"]}</a></div>
+        <div class="flex justify-center flex-col text-s sm:text-2xl my-10">
+            {t["whatisAR.answer1"]}
+            <img class=`justify-self-center self-center m-5 invert ${t["class"]}` src=`/src/content/${lang}/a_rule.png`>
+            {t["whatisAR.answer2"]}
+        </div>
+    </div>
+</div>
+
+<Footer/>
+</body>
+</html>

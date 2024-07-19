@@ -4,6 +4,12 @@ export const languages = {
     ua: "Українська",
 };
 
+export const languagesThesis= [
+    {params: {lang: 'en', 'thesis.title': "a"}},
+    {params: {lang: 'sk'}},
+    {params: {lang: 'ua'}},
+];
+
 export const defaultLang = 'en';
 
 export const ui = {
@@ -12,6 +18,7 @@ export const ui = {
         'nav.about': 'About',
         'nav.thesis': 'Thesis',
         "allrightsreserved": "All rights reserved",
+
     },
     sk: {
         'nav.home': 'Domov',
@@ -23,6 +30,5 @@ export const ui = {
         'nav.home': 'Головна',
         'nav.about': 'Про мене',
         'nav.thesis': 'Дипломна робота',
-        "allrightsreserved": "Всі права захищені",
-    },
+        "allrightsreserved": "Всі права захищені",},
 } as const;
