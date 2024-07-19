@@ -1,36 +1,26 @@
 ---
-import {languages} from '../i18n/ui';
-import {getLangFromUrl, replaceLangInUrl} from '../i18n/utils';
+import { languages } from '../i18n/ui';
+import { getLangFromUrl, replaceLangInUrl } from '../i18n/utils';
 import "/node_modules/flag-icons/css/flag-icons.min.css";
-import {Astro} from "astro/env";
 
 const lang = getLangFromUrl(Astro.url);
 const flagMap = {
     en: 'gb',
+    sk: 'sk',
+    ua: 'ua',
 };
 const currentUrl = Astro.url;
 const flagClass = flagMap[lang] || lang;
-
 ---
-<!--<ul>-->
-<!--    {Object.entries(languages).map(([lang, label]) => (-->
-<!--            <li>-->
-<!--                <a href={`/${lang}/`}>{label}</a>-->
-<!--            </li>-->
-<!--    ))}-->
-<!--</ul>-->
-
 
 <div>
     <button type="button"
             class="inline-flex justify-center w-full rounded-md shadow-sm px-1 py-1 bg-gray-900 hover:bg-gray-700 text-sm font-medium"
             id="menu-button" aria-expanded="true" aria-haspopup="true">
-
         <div class="px-4 py-2 flex flex-row">
-            <div class=`fi fi-${flagClass}`></div>
+            <div class={`fi fi-${flagClass}`}></div>
         </div>
-
-        <svg class=" invert self-center w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+        <svg class="invert self-center w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
              xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
         </svg>
@@ -42,14 +32,14 @@ const flagClass = flagMap[lang] || lang;
     <div class="py-1" role="none">
         <ul>
             {Object.keys(languages).map((lang) => {
-                const flagClass = flagMap[lang] || lang;
+                const flagClass = flagMap[lang as keyof typeof flagMap] || lang;
 
                 return (
                         <a href={`${replaceLangInUrl(currentUrl, lang)}`}>
                             <div class="text-black px-4 py-2 flex flex-row hover:bg-gray-200 ">
-                                <span class=`fi fi-${flagClass}`></span>
-                                <li class="ml-3" role="menuitem" key={lang}>
-                                    {languages[lang]}
+                                <span class={`fi fi-${flagClass}`}></span>
+                                <li class="ml-3" role="menuitem">
+                                    {languages[lang as keyof typeof languages]}
                                 </li>
                             </div>
                         </a>
@@ -63,14 +53,13 @@ const flagClass = flagMap[lang] || lang;
     const button = document.getElementById('menu-button');
     const menu = document.querySelector('.origin-top-right');
 
-    button.addEventListener('click', () => {
-        menu.classList.toggle('hidden');
+    button?.addEventListener('click', () => {
+        menu?.classList.toggle('hidden');
     });
 
     window.addEventListener('click', (e) => {
-        if (!button.contains(e.target as Node)) {
-            menu.classList.add('hidden');
+        if (!button?.contains(e.target as Node)) {
+            menu?.classList.add('hidden');
         }
     });
 </script>
-
