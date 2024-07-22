@@ -10,7 +10,6 @@ const lang  = getLangFromUrl(Astro.url);
 
 // Get the translation for the current language
 const t = getTranslationThesis(lang);
-
 export function getStaticPaths() {
     return thesis.map(t => ({params: t.params}));
 }
@@ -42,17 +41,17 @@ export function getStaticPaths() {
            <a href="https://s.ics.upjs.sk/~vasyl_khorev/prezentacia.pdf">
                <button type="button"
                        class="font-mono  block rounded-md bg-gray-800 px-3 py-2 text-base font-medium text-white hover:bg-gray-700">
-                   <p>{t["presentation"]}</p></button>
+                   {t["presentation"]}</button>
            </a>
            <a href="https://s.ics.upjs.sk/~vasyl_khorev/esej.pdf">
                <button type="button"
                        class="font-mono  block rounded-md bg-gray-800 px-3 py-2 text-base font-medium text-white hover:bg-gray-700">
-                   <p>{t["essay"]}</p></button>
+                   {t["essay"]}</button>
            </a>
            <a href="https://s.ics.upjs.sk/~vasyl_khorev/bakalarska_praca.pdf">
                <button type="button"
                        class="font-mono block rounded-md bg-gray-800 px-3 py-2 text-base font-medium text-white hover:bg-gray-700">
-                   <p>{t["thesis"]}</p></button>
+                   {t["thesis"]}</button>
            </a>
     </div>
 </div>

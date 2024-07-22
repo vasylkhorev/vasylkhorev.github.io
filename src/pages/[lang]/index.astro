@@ -8,7 +8,6 @@ const lang = getLangFromUrl(Astro.url);
 
 // Get the translation for the current language
 const t = getTranslationIndex(lang)
-
 export function getStaticPaths() {
     return index.map(t => ({params: t.params}));
 }

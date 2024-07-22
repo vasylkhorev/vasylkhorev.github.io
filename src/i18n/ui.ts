@@ -4,11 +4,6 @@ export const languages = {
     ua: "Українська",
 };
 
-export const languagesThesis= [
-    {params: {lang: 'en', 'thesis.title': "a"}},
-    {params: {lang: 'sk'}},
-    {params: {lang: 'ua'}},
-];
 
 export const defaultLang = 'en';
 
