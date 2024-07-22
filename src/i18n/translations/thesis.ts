@@ -22,6 +22,7 @@ export const thesis = [
             "class": "w-1/2 sm:w-1/5",
             "chips": "\\textrm{Potato chips}",
             "cocaCola": "\\textrm{Coca-Cola}",
+            ARwiki: "https://en.wikipedia.org/wiki/Association_rule_learning"
         }
     },
     {
@@ -50,6 +51,8 @@ export const thesis = [
             "class": "sm:w-1/3",
             "chips": "\\textrm{Zemiakové lupienky}",
             "cocaCola": "\\textrm{Coca-Cola}",
+            ARwiki: "https://cs.wikipedia.org/wiki/Asocia%C4%8Dn%C3%AD_anal%C3%BDza"
+
         }
     },
     {
@@ -78,6 +81,7 @@ export const thesis = [
             "class": "w-1/2 sm:w-1/5",
             "chips": "\\textrm{Чіпси}",
             "cocaCola": "\\textrm{Coca-Cola}",
+            ARwiki: "https://uk.wikipedia.org/wiki/%D0%9D%D0%B0%D0%B2%D1%87%D0%B0%D0%BD%D0%BD%D1%8F_%D0%B0%D1%81%D0%BE%D1%86%D1%96%D0%B0%D1%82%D0%B8%D0%B2%D0%BD%D0%B8%D1%85_%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D0%BB"
         }
     },
 ];
