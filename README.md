@@ -41,16 +41,11 @@
 
 Website is available on [vasylkhorev.github.io](https://vasylkhorev.github.io/).
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 ### Built With
 
 * [![Astro][Astro]][Astro-url]
 * [![Tailwind CSS][Tailwind CSS]][tailwind-url]
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
@@ -65,17 +60,11 @@ To get a local copy up and running follow these simple example steps.
 
 If you have any questions or feedback, please feel free to reach out to me at [khorev.41\@gmail.com](mailto:khorev.41@gmail.com?subject=vasylkhorev.github.io).
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
 * [GitHub Pages](https://pages.github.com)
-
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
