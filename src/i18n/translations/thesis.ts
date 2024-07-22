@@ -42,12 +42,8 @@ export const thesis = [
             "goals.2": "Implementovať známe algoritmy na generovanie asociačných pravidiel a porovnať ich výhody a nevýhody.",
             "goals.3": "Aplikovať implementované algoritmy na vybraný dataset.",
             "whatisAR": "Čo sú to asociačné pravidlá?",
-            "whatisAR.answer1": "K asociácii dochádza vtedy, keď niekoľko udalostí navzájom súvisí. Intuitívne by sme mohli asociácie popísať\n" +
-                "            takým spôsobom, že určité údaje (alebo udalosti nájdené v údajoch) sú spojené s inými údajmi alebo\n" +
-                "            udalosťami vyplývajúcimi z týchto údajov. Napríklad štúdia vykonaná v supermarkete môže ukázať, že 65% návštevníkov, ktorí si kúpili\n" +
-                "            zemiakové lupienky, si kúpia aj Coca-Colu, a ak existuje zľava pre takýto súbor, kúpia si ju v 85% prípadov.",
-            "whatisAR.answer2": "Takéto vyhľadávanie odhaľuje skryté súvislosti v zdanlivo nesúvisiacich údajoch. Tieto súvislosti sa nazývajú asociačné pravidlá. Tie, ktoré presahujú určitú hra\n" +
-                "            nicu, sa považujú za zaujímavé.  Takéto pravidlá dávajú možnosť prijať opatrenia na základe nájdených vzorov. Pomáhajú tiež pri rozhodovaní a vysvetľovaní.",
+            "whatisAR.answer1": "K asociácii dochádza vtedy, keď niekoľko udalostí navzájom súvisí. Intuitívne by sme mohli asociácie popísať takým spôsobom, že určité údaje (alebo udalosti nájdené v údajoch) sú spojené s inými údajmi alebo udalosťami vyplývajúcimi z týchto údajov. Napríklad štúdia vykonaná v supermarkete môže ukázať, že 65% návštevníkov, ktorí si kúpili zemiakové lupienky, si kúpia aj Coca-Colu, a ak existuje zľava pre takýto súbor, kúpia si ju v 85% prípadov.",
+            "whatisAR.answer2": "Takéto vyhľadávanie odhaľuje skryté súvislosti v zdanlivo nesúvisiacich údajoch. Tieto súvislosti sa nazývajú asociačné pravidlá. Tie, ktoré presahujú určitú hranicu, sa považujú za zaujímavé.  Takéto pravidlá dávajú možnosť prijať opatrenia na základe nájdených vzorov. Pomáhajú tiež pri rozhodovaní a vysvetľovaní.",
             "class": "sm:w-1/3",
             "chips": "\\textrm{Zemiakové lupienky}",
             "cocaCola": "\\textrm{Coca-Cola}",
