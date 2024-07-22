@@ -2,15 +2,19 @@
 import { languages } from '../i18n/ui';
 import { getLangFromUrl, replaceLangInUrl } from '../i18n/utils';
 import "/node_modules/flag-icons/css/flag-icons.min.css";
+import {Astro} from "astro/env";
 
-const lang = getLangFromUrl(Astro.url);
+const currentLang = getLangFromUrl(Astro.url);
 const flagMap = {
     en: 'gb',
     sk: 'sk',
     ua: 'ua',
 };
 const currentUrl = Astro.url;
-const flagClass = flagMap[lang] || lang;
+const flagClass = flagMap[currentLang] || currentLang;
+
+
+
 ---
 
 <div>
@@ -35,7 +39,7 @@ const flagClass = flagMap[lang] || lang;
                 const flagClass = flagMap[lang as keyof typeof flagMap] || lang;
 
                 return (
-                        <a href={`${replaceLangInUrl(currentUrl, lang)}`}>
+                        <a id={lang} onclick="localStorage.setItem('lang', this.id);" href={`${replaceLangInUrl(currentUrl, lang)}`}>
                             <div class="text-black px-4 py-2 flex flex-row hover:bg-gray-200 ">
                                 <span class={`fi fi-${flagClass}`}></span>
                                 <div class="ml-3" role="menuitem">

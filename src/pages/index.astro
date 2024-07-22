@@ -1,14 +1,19 @@
 <meta http-equiv="refresh" id="metaRefresh" content="0;url=" />
 <script is:inline>
     const language = navigator.language;
-    if (language === 'sk' || language === 'en') {
-        document.querySelector('#metaRefresh').setAttribute('content', `0;url=/${language}/`);
-    }
-    else if (language === 'uk' || language === 'ua') {
-        document.querySelector('#metaRefresh').setAttribute('content', `0;url=/ua/`);
-    }
-    else {
+    let savedLang = localStorage.getItem('lang');
+    if (savedLang) {
+        document.querySelector('#metaRefresh').setAttribute('content', `0;url=/${savedLang}/`);
+    } else {
+        if (language === 'sk') {
+            localStorage.setItem('lang', language);
+            document.querySelector('#metaRefresh').setAttribute('content', `0;url=/sk/`);
+        } else if (language === 'uk' || language === 'ua') {
+            localStorage.setItem('lang', language);
+            document.querySelector('#metaRefresh').setAttribute('content', `0;url=/ua/`);
+        } else {
+            localStorage.setItem('lang', language);
         document.querySelector('#metaRefresh').setAttribute('content', `0;url=/en/`);
+        }
     }
-    console.log(language)
 </script>
