@@ -15,12 +15,12 @@ const flagClass = flagMap[lang] || lang;
 
 <div>
     <button type="button"
-            class="inline-flex justify-center w-full rounded-md shadow-sm px-1 py-1 bg-gray-900 hover:bg-gray-700 text-sm font-medium"
+            class="inline-flex justify-center w-full rounded-md shadow-sm px-1 py-1 bg-gray-300 dark:bg-gray-900 hover:bg-gray-400 dark:hover:bg-gray-700 text-sm font-medium"
             id="menu-button" aria-expanded="true" aria-haspopup="true">
         <span class="pl-4 pr-3 py-2 flex flex-row">
             <span class={`fi fi-${flagClass}`}></span>
         </span>
-        <svg class="stroke-amber-50 self-center mr-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+        <svg class="stroke-black dark:stroke-amber-50 self-center mr-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
              xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
         </svg>
