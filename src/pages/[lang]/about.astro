@@ -1,0 +1,49 @@
+---
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import "../../styles.css";
+import {getLangFromUrl} from "../../i18n/utils";
+import {FACULTY, PUBLIC_INFORMATICS_URL, UNIVERSITY} from "../../i18n/urls";
+import {about, getTranslationAbout} from "../../i18n/translations/about";
+
+const lang = getLangFromUrl(Astro.url);
+
+// Get the translation for the current language
+const t = getTranslationAbout(lang)
+
+export function getStaticPaths() {
+    return about.map(t => ({params: t.params}));
+}
+---
+<html lang={lang}>
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="icon" type="image/svg+xml" href="/account.png"/>
+    <meta name="viewport" content="width=device-width"/>
+    <meta name="generator" content={Astro.generator}>
+    <title>{t["pageTitle"]}</title>
+</head>
+
+<body>
+<Header/>
+<div class="text-amber-50 bg-gray-900 flex items-center justify-center">
+    <div class=" w-4/5 sm:w-1/2">
+        <div class="text-3xl font-bold text-center underline underline-offset-8 m-10">{t["pageTitle"]}</div>
+        <div class="text-xl mb-10">{t["iamastudentof"]} <a class="underline hover:font-semibold"
+                                                           href=`${PUBLIC_INFORMATICS_URL[lang]}`>{t["program"]}</a> {t["atthe"]}
+            <a
+                    href=`${FACULTY[lang]}` class="underline hover:font-semibold">{t["faculty"]}</a> {t["attheuni"]} <a
+                    class="underline hover:font-semibold" href=`${UNIVERSITY[lang]}`>{t["uni"]}</a>. {t["iminterested"]}<a
+                    class="underline hover:font-semibold" href={`/${lang}/thesis/`}
+                    title=`${t["comeandsee"]}`>{t["machinelearning"]}</a>.
+        </div>
+
+        <div class="text-3xl font-bold text-center underline underline-offset-8 m-10">{t["hobbies"]}</div>
+        <div class="text-xl mb-10">
+
+        </div>
+    </div>
+</div>
+<Footer/>
+</body>
+</html>

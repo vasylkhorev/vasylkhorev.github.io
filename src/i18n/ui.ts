@@ -29,6 +29,6 @@ export const ui = {
     ua: {
         'nav.home': 'Головна',
         'nav.about': 'Про мене',
-        'nav.thesis': 'Дипломна робота',
+        'nav.thesis': 'Бакалаврська робота',
         "allrightsreserved": "Всі права захищені",},
 } as const;
