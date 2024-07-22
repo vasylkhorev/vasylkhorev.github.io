@@ -1,1 +1,13 @@
-<meta http-equiv="refresh" content="0;url=/en/" />
+<meta http-equiv="refresh" id="metaRefresh" content="0;url=" />
+<script is:inline>
+    const language = navigator.language;
+    if (language === 'sk' || language === 'en') {
+        document.querySelector('#metaRefresh').setAttribute('content', `0;url=/${language}/`);
+    }
+    else if (language === 'uk' || language === 'ua') {
+        document.querySelector('#metaRefresh').setAttribute('content', `0;url=/ua/`);
+    }
+    else {
+        document.querySelector('#metaRefresh').setAttribute('content', `0;url=/en/`);
+    }
+</script>
