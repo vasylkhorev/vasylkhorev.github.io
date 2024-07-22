@@ -4,7 +4,6 @@ const username = "withastro";
 const year = new Date().getFullYear()
 
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
-import LangPicker from "./LangPicker.astro";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
