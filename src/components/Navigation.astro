@@ -50,6 +50,9 @@ const t = useTranslations(lang);
                         <a href={`/${lang}/thesis/`}
                            class="rounded-md bg-gray-300 dark:bg-gray-900 px-3 py-2 text-sm font-medium hover:bg-gray-400 dark:hover:bg-gray-700 "
                            aria-current="page">{t('nav.thesis')}</a>
+                        <a href={`/${lang}/blog/`}
+                           class="rounded-md bg-gray-300 dark:bg-gray-900 px-3 py-2 text-sm font-medium hover:bg-gray-400 dark:hover:bg-gray-700 "
+                           aria-current="page">{t('nav.blog')}</a>
                         <a href={`/${lang}/about/`}
                            class="rounded-md bg-gray-300 dark:bg-gray-900 px-3 py-2 text-sm font-medium hover:bg-gray-400 dark:hover:bg-gray-700 "
                            aria-current="page">{t('nav.about')}</a>
@@ -80,7 +83,9 @@ const t = useTranslations(lang);
                    class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 bg-gray-900">{t("nav.home")}</a>
                 <a href={`/${lang}/thesis/`}
                    class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 bg-gray-900">{t("nav.thesis")}</a>
-                <a href={`/${lang}/about`}
+                <a href={`/${lang}/blog/`}
+                   class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 bg-gray-900 hover:text-white">{t("nav.blog")}</a>
+                <a href={`/${lang}/about/`}
                    class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 bg-gray-900 hover:text-white">{t("nav.about")}</a>
             </div>
         </div>

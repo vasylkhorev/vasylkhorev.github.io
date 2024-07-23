@@ -1,0 +1,36 @@
+---
+import {blog, getTranslationBlog} from "../../i18n/translations/blog";
+import {getLangFromUrl} from "../../i18n/utils";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+
+let lang: string = getLangFromUrl(Astro.url);
+
+const t = getTranslationBlog(lang);
+export function getStaticPaths() {
+    return blog.map(t => ({params: t.params}));
+}
+
+import { getCollection } from 'astro:content';
+import PostCard from "../../components/PostCard.astro";
+const posts = await getCollection('blog');
+---
+
+<html lang={lang}>
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="icon" type="image/svg+xml" href="/account.png"/>
+    <meta name="viewport" content="width=device-width"/>
+    <meta name="generator" content={Astro.generator}>
+    <title>{t["pageTitle"]}</title>
+</head>
+<body class="dark:text-amber-50 font-mono bg dark:bg-gray-900">
+<Header/>
+<div class="flex items-center justify-center ">
+    <h1 class="my-10 text-8xl ">{t["pageTitle"]}</h1>
+</div>
+<div class="flex flex-col items-center justify-center">
+    {posts.map((post, index) => <PostCard last={index === posts.length - 1} lang={lang} date={post.data.date} summary={post.data.summary} href={post.slug} title={post.data.title} />)}
+</div>
+<Footer/>
+</body>

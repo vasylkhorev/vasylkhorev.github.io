@@ -1,0 +1,17 @@
+---
+import {dateOptions, getLocale} from "../i18n/utils";
+const { href, title, summary, date, lang, last } = Astro.props;
+---
+
+<div class="flex flex-col w-3/4 sm:w-1/2">
+	<div class="mb-10">
+		<a href={href} class="font-extrabold text-4xl underline" >{title}</a>
+		<div class="text-2xl mt-5">
+			{summary}
+		</div>
+		<div class="text-gray-600 dark:text-gray-400 font-bold text-xl mt-5">
+			&mdash; {new Date(date).toLocaleDateString(getLocale(lang), dateOptions)}
+		</div>
+		{!last && <hr class="mt-10 border-2 rounded" />}
+	</div>
+</div>

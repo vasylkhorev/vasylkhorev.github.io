@@ -1,7 +1,11 @@
-import { ui, defaultLang } from './ui';
+import {defaultLang, ui} from './ui';
 
 export function getLangFromUrl(url: URL) {
-    const [, lang] = url.pathname.split('/');
+    return getLangFromUrlString(url.pathname);
+}
+
+function getLangFromUrlString(url: string) {
+    const [, lang] = url.split('/');
     if (lang in ui) return lang as keyof typeof ui;
     return defaultLang;
 }
@@ -17,4 +21,20 @@ export function useTranslations(lang: keyof typeof ui) {
         return ui[lang][key] || ui[defaultLang][key];
     }
 }
+
+export function getLocale(lang: string): string {
+    if (lang === "ua") {
+        return "uk-UA";
+    } else if (lang === "sk") {
+        return "sk-SK";
+    } else {
+        return "en-US";
+    }
+}
+
+export const dateOptions: object = {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+};
 

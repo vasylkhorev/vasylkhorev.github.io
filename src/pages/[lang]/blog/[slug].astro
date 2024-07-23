@@ -1,0 +1,45 @@
+---
+import {CollectionEntry, getCollection} from "astro:content";
+import {getLangFromUrl} from "../../../i18n/utils";
+import {languages} from "../../../i18n/ui";
+import Post from "../../../components/Post.astro";
+import Header from "../../../components/Header.astro";
+import Footer from "../../../components/Footer.astro";
+
+
+const lang = getLangFromUrl(Astro.url);
+export async function getStaticPaths() {
+    const posts = await getCollection("blog");
+    const paths = Object.keys(languages).map(lang =>
+        posts.map((post) => ({
+            params: {lang, slug: post.slug},
+            props: {post},
+        }))
+    );
+
+    return paths.reduce((acc, val) => acc.concat(val), []);
+}
+
+const {post} = Astro.props as { post: CollectionEntry<"blog"> };
+const {Content} = await post.render();
+
+
+---
+<html lang={lang}>
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="icon" type="image/svg+xml" href="/account.png"/>
+    <meta name="viewport" content="width=device-width"/>
+    <meta name="generator" content={Astro.generator}>
+    <title>{post.data.title}</title>
+</head>
+
+<body>
+<Header/>
+<div class="flex justify-center items-center">
+    <Post lang={lang} title={post.data.title} date={post.data.date}>
+        <Content/>
+    </Post>
+</div>
+<Footer/>
+</body>
