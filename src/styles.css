@@ -1,6 +1,7 @@
 body {
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
     width: 100dvw;
+    overflow-x: hidden; /* Prevent horizontal scroll */
 }
 .katex-display {
     overflow-x: auto;
