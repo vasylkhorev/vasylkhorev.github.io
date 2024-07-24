@@ -3,6 +3,7 @@ import {dateOptions, getLocale} from "../i18n/utils";
 const { href, title, summary, date, lang, last } = Astro.props;
 ---
 
+<body>
 <div class="flex flex-col w-3/4 sm:w-1/2">
 	<div class="mb-10">
 		<a href={href} class="font-extrabold text-4xl underline" >{title}</a>
@@ -15,3 +16,4 @@ const { href, title, summary, date, lang, last } = Astro.props;
 		{!last && <hr class="mt-10 border-2 rounded" />}
 	</div>
 </div>
+</body>

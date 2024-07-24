@@ -13,7 +13,8 @@ export function getStaticPaths() {
 
 import { getCollection } from 'astro:content';
 import PostCard from "../../components/PostCard.astro";
-const posts = await getCollection('blog');
+const posts = (await getCollection('blog'))
+    .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
 ---
 
 <html lang={lang}>
@@ -24,6 +25,8 @@ const posts = await getCollection('blog');
     <meta name="generator" content={Astro.generator}>
     <title>{t["pageTitle"]}</title>
 </head>
+
+
 <body class="dark:text-amber-50 font-mono bg dark:bg-gray-900">
 <Header/>
 <div class="flex items-center justify-center ">

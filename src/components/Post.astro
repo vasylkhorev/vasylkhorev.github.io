@@ -2,30 +2,37 @@
 import {dateOptions, getLocale} from "../i18n/utils";
 const {title, date, post, lang} = Astro.props;
 ---
-<body class="bg-white text-black dark:text-amber-50 dark:bg-gray-900 font-mono">
+<body class="bg-white text-black dark:text-amber-50 dark:bg-gray-900">
 <div class="flex justify-center items-center my-14">
     <div class="w-5/6 sm:w-1/2">
         <div class="text-center dark:text-gray-400 font-thin text-xl">{new Date(date).toLocaleDateString(getLocale(lang), dateOptions)}</div>
-        <div class="mt-2 mb-10 text-6xl dark:text-amber-50 font-extrabold text-center">{title}</div>
+        <div class="mt-2 mb-10 text-3xl sm:text-6xl dark:text-amber-50 font-extrabold text-center">{title}</div>
         <div class="text-lg sm:text-xl mb-15 dark:text-gray-400
                     prose-h1:text-5xl sm:prose-h1:text-7xl  prose-h1:my-10
                     prose-h2:text-4xl sm:prose-h2:text-6xl  prose-h2:my-8 prose-headings:dark:text-amber-50
-                    prose-h3:text-3xl sm:prose-h3:text-5xl  prose-h3:my-6
-                    prose-h4:text-2xl sm:prose-h4:text-4xl  prose-h4:my-5
-                    prose-h5:text-xl sm:prose-h5:text-3xl  prose-h5:my-3
+                    prose-h3:text-3xl sm:prose-h3:text-5xl  prose-h3:my-7
+                    prose-h4:text-2xl sm:prose-h4:text-4xl  prose-h4:my-7
+                    prose-h5:text-xl sm:prose-h5:text-3xl  prose-h5:my-7
                     prose-h6:text-l sm:prose-h6:text-2xl  prose-h6:my-2
-                    prose-a:underline hover:prose-a:text-cyan-300
+                    prose-a:underline hover:prose-a:text-cyan-600
+                    prose-a:break-all
                     prose-ul:list-disc prose-ul:ml-10 prose-li:mt-1
                     prose-hr:my-10 prose-hr:rounded prose-hr:border-t-4
                     prose-blockquote:border-l-4 prose-blockquote:pl-5 prose-blockquote:my-10 prose-blockquote:border-gray-400
                     prose-ol:list-decimal prose-ol:ml-10
-                    prose-table:my-10 prose-table:font-bold prose-th:px-5 prose-td:px-5 prose-td:pt-2 prose-th:border-b-2 prose-table:w-[75dvw] sm:prose-table:w-full prose-table:text-base prose-table:table-fixed sm:prose-table:table- sm:prose-table:text-xl
+                    prose-table:my-10 prose-table:font-bold prose-th:px-5 prose-td:px-5 prose-td:pt-2 prose-th:border-b-2 prose-table:w-[75dvw] sm:prose-table:w-full prose-table:text-base prose-table:table-fixed sm:prose-table:table-auto sm:prose-table:table- sm:prose-table:text-xl
                     special-class-for-inline-code prose-inline-code:before:content-['`'] prose-inline-code:after:content-['`'] prose-code:font-bold dark:prose-code:text-white
                     prose-pre:rounded-xl prose-pre:my-10 prose-pre:p-3 prose-pre:text-sm sm:prose-pre:text-base prose-pre:w-[83dvw] sm:prose-pre:w-full
+                    prose-pre:bg-gray-700 prose-pre:overflow-x-auto prose-pre:
                     prose-iframe:my-10">
             <slot/>
         </div>
     </div>
 </div>
-
 </body>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.css"
+      integrity="sha384-NFTC4wvyQKLwuJ8Ez9AvPNBv8zcC2XaQzXSMvtORKw28BdJbB2QE8Ka+OyrIHcQJ" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.js"
+        integrity="sha384-z9arB7KJHppq8kK9AESncXcQd/KXIMMPiCrAdxfFpp+5QU438lgBE7UFGbk+gljP"
+        crossorigin="anonymous"></script>
