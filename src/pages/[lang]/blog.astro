@@ -30,7 +30,7 @@ const posts = (await getCollection('blog'))
 <body class="dark:text-amber-50 font-mono bg dark:bg-gray-900">
 <Header/>
 <div class="flex items-center justify-center ">
-    <h1 class="my-10 text-8xl ">{t["pageTitle"]}</h1>
+    <h1 class="my-10 text-5xl sm:text-8xl ">{t["pageTitle"]}</h1>
 </div>
 <div class="flex flex-col items-center justify-center">
     {posts.map((post, index) => <PostCard last={index === posts.length - 1} lang={lang} date={post.data.date} summary={post.data.summary} href={post.slug} title={post.data.title} />)}

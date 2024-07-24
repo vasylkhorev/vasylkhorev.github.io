@@ -4,10 +4,10 @@ const { href, title, summary, date, lang, last } = Astro.props;
 ---
 
 <body>
-<div class="flex flex-col w-3/4 sm:w-1/2">
+<div class="flex flex-col w-5/6 sm:w-1/2">
 	<div class="mb-10">
-		<a href={href} class="font-extrabold text-4xl underline" >{title}</a>
-		<div class="text-2xl mt-5">
+		<a href={href} class="font-extrabold text-2xl sm:text-4xl underline" >{title}</a>
+		<div class="text-base sm:text-2xl mt-5">
 			{summary}
 		</div>
 		<div class="text-gray-600 dark:text-gray-400 font-bold text-xl mt-5">
