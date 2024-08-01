@@ -4,5 +4,6 @@
     "target": "ES2019",
     "noImplicitAny": false,
     "strict": false,
+    "skipLibCheck": true
   }
 }

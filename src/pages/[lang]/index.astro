@@ -4,10 +4,8 @@ import Footer from "../../components/Footer.astro";
 import "../../styles.css";
 import {getLangFromUrl} from "../../i18n/utils";
 import {getTranslationIndex, index} from "../../i18n/translations";
-import {FACULTY, PUBLIC_INFORMATICS_URL, UNIVERSITY} from "../../i18n/urls";
 import {getTranslationAbout} from "../../i18n/translations/about";
 import About from "../../components/About.astro";
-import Skills from "../../components/Skills.astro";
 let lang: string = getLangFromUrl(Astro.url);
 
 
