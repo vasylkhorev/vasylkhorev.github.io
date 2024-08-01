@@ -1,28 +1,21 @@
----
-import "../styles.css";
-import {getLangFromUrl} from "../i18n/utils";
-import {index} from "../i18n/translations";
-let lang: string = getLangFromUrl(Astro.url);
-
-// Get the translation for the current language
-export function getStaticPaths() {
-    return index.map(t => ({params: t.params}));
-    }
-
----
+<meta http-equiv="refresh" id="metaRefresh" content="0;url="/>
 <script is:inline>
     const language = navigator.language;
     let savedLang = localStorage.getItem('lang');
-    if (savedLang && savedLang !== "en") {
+    console.log("saved: " + savedLang);
+
+    if (savedLang) {
         document.querySelector('#metaRefresh').setAttribute('content', `0;url=/${savedLang}/`);
     } else {
         if (language === 'sk') {
             localStorage.setItem('lang', language);
             document.querySelector('#metaRefresh').setAttribute('content', `0;url=/sk/`);
         } else if (language === 'uk' || language === 'ua') {
-            localStorage.setItem('lang', language);
+            localStorage.setItem('lang', "ua");
             document.querySelector('#metaRefresh').setAttribute('content', `0;url=/ua/`);
         } else {
+            localStorage.setItem('lang', "en");
+            document.querySelector('#metaRefresh').setAttribute('content', `0;url=/en/`);
         }
     }
 </script>
