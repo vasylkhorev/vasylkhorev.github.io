@@ -1,7 +1,8 @@
 ---
-import {type CollectionEntry, getCollection} from "astro:content";
+import {getCollection} from "astro:content";
 import {getLangFromUrl} from "../../../i18n/utils";
 import {languages} from "../../../i18n/ui";
+import "../../../styles.css";
 import Post from "../../../components/Post.astro";
 import Header from "../../../components/Header.astro";
 import Footer from "../../../components/Footer.astro";
@@ -9,18 +10,23 @@ import Footer from "../../../components/Footer.astro";
 
 const lang = getLangFromUrl(Astro.url);
 export async function getStaticPaths() {
-    const posts = await getCollection("blog");
+    const posts = await getCollection('blog');
+
+    const headings = await Promise.all(
+        posts.map((entry) => entry.render().then((data) => data.headings)),
+    );
+
     const paths = Object.keys(languages).map(lang =>
-        posts.map((post) => ({
+        posts.map((post,index) => ({
                 params: {lang: lang, slug: post.slug},
-            props: {post},
+            props: {post, headings:headings[index]},
         }))
     );
 
     return paths.reduce((acc, val) => acc.concat(val), []);
 }
 
-const {post} = Astro.props as { post: CollectionEntry<"blog"> };
+const {post, headings} = Astro.props
 const {Content} = await post.render();
 
 
@@ -34,10 +40,10 @@ const {Content} = await post.render();
     <title>{post.data.title}</title>
 </head>
 
-<body>
+<body class="text-black dark:text-gray-200 bg-white dark:bg-gray-900">
 <Header/>
 <div class="flex justify-center items-center">
-    <Post lang={lang} title={post.data.title} date={post.data.date}>
+    <Post {headings}  lang={lang} summary={post.data.summary} title={post.data.title} date={post.data.date}>
         <Content/>
     </Post>
 </div>

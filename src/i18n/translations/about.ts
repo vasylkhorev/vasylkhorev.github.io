@@ -12,7 +12,9 @@ export const about = [
             iminterested :"I am interested in web development and ",
             machinelearning: "machine learning",
             comeandsee:"Come and see my thesis",
-            hobbies: "Hobbies",
+            skills: "Skills",
+            experience: "Experience",
+
         }
     },
     {
@@ -28,7 +30,8 @@ export const about = [
             iminterested: "Zaoberam sa vývojom webových stránok a ",
             machinelearning: "strojovým učením",
             comeandsee: "Pozri si moju bakalársku prácu",
-            hobbies: "Záľuby",
+            skills: "Zručnosti",
+            experience: "Skúsenosti",
 
         }
     },
@@ -45,7 +48,8 @@ export const about = [
             iminterested: "Цікавлюся розробкою веб-сайтів та ",
             machinelearning: "машинним навчанням",
             comeandsee: "Переглянь мою бакалаврську роботу",
-            hobbies: "Хобі",
+            skills: "Навички",
+            experience: "Досвід",
         }
     },
 ];

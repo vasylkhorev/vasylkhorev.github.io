@@ -9,32 +9,14 @@ summary: "Association rule mining is a technique to identify underlying relation
 This post will introduce you to the concept of association rule mining. We will discuss the basics of association rule
 mining, define key terms such as support, confidence and mine association rules using Kaggle's Market Basket Analysis
 dataset.
-<!-- TOC start (generated with https://github.com/derlin/bitdowntoc) -->
 
-### Table of Contents
-  * [What is an association?](#what-is-an-association)
-  * [Definitions](#definitions)
-  * [Metrics](#metrics)
-  * [Algorithms](#algorithms)
-    + [Apriori](#apriori)
-    + [FP-Growth](#fp-growth)
-  * [Dataset](#dataset)
-  * [Mining](#mining)
-    + [Implementation](#implementation)
-      - [Data preparation](#data-preparation)
-      - [Mining association rules](#mining-association-rules)
-    + [Results](#results)
-  * [Bibliography](#bibliography)
-
-<!-- TOC end -->
-
-### What is an association?
+## What is an association?
 
 Wikipedia gives us such definiton of association:
 > any relationship between two measured quantities that renders them statistically dependent (but not necessarily causal
 > or a correlation)
 
-###  Definitions
+## Definitions
 
 > Consider the set \\(\mathcal{I}=\\{ i_1, i_2, ..., i_m \\}\\), where the elements of this set are literals, which we
 > will
@@ -51,7 +33,7 @@ Wikipedia gives us such definiton of association:
 > Example: Let \\(\mathcal{I} = \\{ \textrm{milk}, \textrm{butter}, \textrm{eggs}\\} \\), then \\( \\{ \textrm{milk} \\}
 > \Rightarrow \\{ \textrm{butter} \\} \\) is an association rule.
 
-### Metrics
+## Metrics
 
 To determine if an association rule is interesting, we will use the following metrics:
 > **Support**: The support of an itemset \\(X \\) is defined as the proportion of transactions in the database in which the itemset appears.
@@ -67,21 +49,21 @@ $$
 \large \textrm{confidence}(X \Rightarrow Y) = \frac{\text{support}(X \cup Y)}{\text{support}(X)}
 $$
 
-### Algorithms
+## Algorithms
 
-#### [Apriori](https://en.wikipedia.org/wiki/Apriori_algorithm)
+### [Apriori](https://en.wikipedia.org/wiki/Apriori_algorithm)
 
 This algorithm was proposed by Agrawal and Srikanth in 1994[^1]. It got its name due to an
 assumption we call the **a priori principle**. This states that:
-> Every subset of a frequented set of items is also frequented_. Equivalently, _if a set is non-frequented, then every
-superset of it is also non-frequented_.
+> Every subset of a frequented set of items is also frequented. Equivalently, if a set is non-frequented, then every
+superset of it is also non-frequented.
 
-> You may also encounter the term **antimonotonicity** or **downward closure**.
+You may also encounter the term **antimonotonicity** or **downward closure**.
 
 Thanks to this fact, one can effectively narrow down the search space. The given principle
 allows to gradually increase the size of the sets, and thus find all frequented sets.
 
-##### How does it work?
+#### How does it work?
 
 The algorithm makes several passes through the database. The first pass simply counts the _support_ values of
 each item -- those that meet a threshold are considered frequent single-element sets. In the $k$-th step, based on the
@@ -91,7 +73,7 @@ end of the traversal, only those candidate sets that are frequent are selected, 
 algorithm is executed until all candidate sets from the previous transition have support less than a specified
 threshold.
 
-##### Pseudocode
+#### Pseudocode
 
 ```python
 L = { frequent 1-itemsets }
@@ -122,14 +104,14 @@ WHERE p.item1 = q.item1, ..., p.itemk_2 = q.itemk_2 , p.itemk_1 < q.itemk_1
      remove c from Ck;
 ```
 
-##### Advantages and disadvantages
+#### Advantages and disadvantages
 
 The main disadvantage of this algorithm is its computational complexity. Processing a large number of candidate sets is
 expensive. For example, if there are $10^4$ frequent single-element sets, Apriori needs to generate more than $10^7$
 two-element sets. Furthermore, to find some frequent set of cardinality 100, such as $\{a_1, ...,a_{100}\}$, the
 algorithm needs to generate more than $2^{100} \approx 10^{30}$ candidates[^2].
 
-####  [FP-Growth](https://en.wikipedia.org/wiki/Association_rule_learning#FP-growth_algorithm)
+###  [FP-Growth](https://en.wikipedia.org/wiki/Association_rule_learning#FP-growth_algorithm)
 
 The algorithm was proposed in 2000 by Han, Pei and Yin[^2]. It represents a significant improvement
 over the previous one -- it does not require the generation of candidate sets, which leads to a substantial increase in
@@ -140,18 +122,17 @@ The FP-growth algorithm consists of two phases:
 1. **construct** FP-tree, which is a compact representation of the data, is **constructed** in the first phase.
 2. using FP-tree, **generate** frequent itemsets.
 
-##### How does it work?
+#### How does it work?
 
 The algorithm represents the database using a tree structure called **frequent pattern tree**, abbreviated
 **FP-tree**. This structure allows efficient querying of the frequencies (support) of any set and is designed to be
 compact while not requiring multiple passes through the database during its construction.
 
-<br/>
+
 
 Logically, such a tree need not contain unfrequented items, because _any set that contains some unfrequented item cannot
 be frequented_.
 
-<br/>
 
 Each node of the tree, except the root, has the following attributes:
 
@@ -159,12 +140,12 @@ Each node of the tree, except the root, has the following attributes:
 - **count**: the number of transactions that contain items on the path to the given node.
 - **node-link**: links to other nodes in the tree that have the same name.
 
-<br/>
+
 
 A header table is created for easier searching and access to nodes. Each entry in the table represents one item and
 contains a link to the node in the tree where that item is located.
 
-##### Pseudocode
+#### Pseudocode
 
 Each transaction from the database is mapped to a path in the tree.
 
@@ -188,8 +169,6 @@ items, frequent items will be prioritized at the beginning of the transaction, a
 items will be inserted closer to the root of the tree, increasing the chance that this item will be shared among
 multiple transactions.
 
-<br/>
-
 _**Line 6**_ branch corresponds to traversing an existing path. In this case, the counter of the node in question is
 simply
 incremented, saving time and resources.
@@ -205,13 +184,9 @@ information, such as the value of _support_, is stored in the tree.
 > It is noteworthy that the dimension of the tree is bounded by the total occurrence of frequented sets in the database,
 > and the height is bounded by the size of the largest frequented set in any transaction[^2].
 
-<br/>
-
 ![alt text](fp-tree.png "Example of FP-tree")
 
-<br/>
-
-##### Advantages and disadvantages
+#### Advantages and disadvantages
 
 The authors of this algorithm state that the dimension of the FP-tree is usually much smaller than the dimension of the
 database. Similarly, the conditional FP-tree is usually much smaller than the original tree (the conditional FP-tree is
@@ -223,13 +198,11 @@ Although the FP-growth algorithm is faster, its implementation is more complex c
 
 [[Top]](#top)
 
-### Dataset
+## Dataset
 
 We used the "The Bread Basket" dataset available on the Kaggle platform[^3] to analyse it using
 association rules. This dataset contains information on transactions at "The Bread Basket" bakery in Edinburgh,
 Scotland.
-
-<br/>
 
 The dataset is publicly available for download in `.csv` format. It contains **20507** records, more than **9000**
 transactions and **5** attributes:
@@ -250,8 +223,6 @@ transactions and **5** attributes:
  9683    | Pastry       | 04. 09. 2017 14:57 | Afternoon   | Weekend     
  9684    | Smoothies    | 04. 09. 2017 15:04 | Afternoon   | Weekend     
 
-#####         
-
 The actual implementation of the Apriori method accepts data in a form, where we have individual
 transactions in rows and items in columns. A value of 1 or 0 in the $i$-th row and $j$-th column of the table determines
 whether item $j$ was purchased within transaction $i$.
@@ -261,17 +232,23 @@ whether item $j$ was purchased within transaction $i$.
 We also take the time aspect into account in the analysis. We add four columns to the resulting table: Afternoon,
 Evening, Morning, Night. The resulting data frame, which will serve as input for the mining method, is given below:
 
-| **No.** | **Item 1** | ... | **Item 94** | **Afternoon** | **Evening** | **Morning** | **Night** |
-|---------|------------|-----|-------------|---------------|-------------|-------------|-----------|
-| 1       | 0          | ... | 0           | 0             | 0           | 1           | 0         |
-| 2       | 0          | ... | 0           | 0             | 0           | 1           | 0         |
-| ...     | ...        | ... | ...         | ...           | ...         | ...         | ...       |
-| 9683    | 0          | ... | 0           | 0             | 1           | 0           | 0         |
-| 9684    | 0          | ... | 0           | 0             | 1           | 0           | 0         |
+[//]: # (| **No.** | **Item 1** | ... | **Item 94** | **Afternoon** | **Evening** | **Morning** | **Night** |)
+
+[//]: # (|---------|------------|-----|-------------|---------------|-------------|-------------|-----------|)
+
+[//]: # (| 1       | 0          | ... | 0           | 0             | 0           | 1           | 0         |)
+
+[//]: # (| 2       | 0          | ... | 0           | 0             | 0           | 1           | 0         |)
+
+[//]: # (| ...     | ...        | ... | ...         | ...           | ...         | ...         | ...       |)
+
+[//]: # (| 9683    | 0          | ... | 0           | 0             | 1           | 0           | 0         |)
+
+[//]: # (| 9684    | 0          | ... | 0           | 0             | 1           | 0           | 0         |)
 
 [[Top]](#top)
 
-###  Mining
+##  Mining
 
 The problem of finding association rules can be divided into **two tasks**:
 
@@ -284,24 +261,24 @@ The problem of finding association rules can be divided into **two tasks**:
   $$
   if the rule satisfies the minimum confidence value condition.
 
-<br/>
+
 
 The following parameters for the association rules were chosen experimentally:
 
 - rule support threshold: $\textrm{min\_sup} = 0{,}03$.
 - confidence threshold: $\textrm{min\_conf} = 0{,}5$.
 
-<br/>
+
 
 For rule $A \Rightarrow B$ we require, that $A \cup B$ should occur in at least $3 \%$ of transactions, and that
 $B$ should occur with probability at least $50 \%$ in each transaction with $A$.
 
-#### Implementation
+### Implementation
 
 From the available online implementations of the Apriori and FP-growth algorithm, we have chosen to implement the method using
 _mlxtend_ library[^4].
 
-##### Data preparation
+#### Data preparation
 
 ```python
 dataset = pd.read_csv("bakery.csv")
@@ -321,7 +298,7 @@ df = pd.concat([df, daypart], axis=1)
 df
 ```
 
-##### Mining association rules
+#### Mining association rules
 
 > Apriori
 
@@ -343,7 +320,7 @@ rules = association_rules(frq_items, metric ="confidence", min_threshold = 0.5)
 rules = rules.sort_values(['confidence'], ascending =[ False])
 ```
 
-#### Results
+### Results
 We successfully mined association rules from the dataset. The table below shows some of the 23 rules, sorted by confidence.
 
 | No.    | **Antecedents**      | **Consequents** | **Support** | **Confidence** |
@@ -371,7 +348,7 @@ café owner to stimulate the sale of both products at the same time, e.g. by dis
 
 [[Top]](#top)
 
-### Bibliography
+## Bibliography
 
 [^1]:Agrawal, Rakesh and Ramakrishnan Srikant, 1994. Fast Algorithms for Mining Association Rules in Large Databases.
 In:

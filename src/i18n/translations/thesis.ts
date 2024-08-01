@@ -17,7 +17,7 @@ export const thesis = [
             "goals.3": "Apply the implemented algorithms to a selected dataset.",
             "whatisAR": "What is Association Rule?",
             "whatisAR.answer1": "Association occurs when several events are interrelated. It indicates that certain data (or events found in the data) are associated with other data or events resulting from the data. For example, a study conducted in a supermarket may show that 65% of visitors who buy potato chips will also buy Coca-Cola, and if there is a discount for such a set they will buy it 85% of the time.",
-            "whatisAR.answer2": "If the store has information about such an association, it is easy for managers to judge how effective the discount is." +
+            "whatisAR.answer2": "If the store has information about such an association, it is easy for managers to judge how effective the discount is. " +
                 "These associations are called rules. Those that exceed a certain threshold are considered interesting. Such rules help in decision making and explanation.",
             "class": "w-1/2 sm:w-1/5",
             "chips": "\\textrm{Potato chips}",

@@ -1,0 +1,16 @@
+---
+import {getTranslationAbout} from "../i18n/translations/about";
+import {FACULTY, PUBLIC_INFORMATICS_URL, UNIVERSITY} from "../i18n/urls";
+
+const {lang} = Astro.props;
+
+const t = getTranslationAbout(lang)
+---
+<div class="text-base sm:text-2xl">{t["iamastudentof"]} <a class="underline hover:decoration-2"
+                                                                 href=`${PUBLIC_INFORMATICS_URL[lang]}`>{t["program"]}</a> {t["atthe"]}
+    <a
+            href=`${FACULTY[lang]}` class="underline hover:decoration-2">{t["faculty"]}</a> {t["attheuni"]} <a
+            class="underline hover:decoration-2" href=`${UNIVERSITY[lang]}`>{t["uni"]}</a>. {t["iminterested"]}<a
+            class="underline hover:decoration-2" href={`/${lang}/thesis/`}
+            title=`${t["comeandsee"]}`>{t["machinelearning"]}</a>.
+</div>

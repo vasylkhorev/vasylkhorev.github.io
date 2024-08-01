@@ -1,6 +1,7 @@
 ---
 import {blog, getTranslationBlog} from "../../i18n/translations/blog";
 import {getLangFromUrl} from "../../i18n/utils";
+import "../../styles.css";
 import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
 
@@ -27,7 +28,7 @@ const posts = (await getCollection('blog'))
 </head>
 
 
-<body class="dark:text-amber-50 font-mono bg dark:bg-gray-900">
+<body class="dark:text-gray-200 dark:bg-gray-900">
 <Header/>
 <div class="flex items-center justify-center ">
     <h1 class="my-10 text-5xl sm:text-8xl ">{t["pageTitle"]}</h1>

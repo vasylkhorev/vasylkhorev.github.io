@@ -5,7 +5,7 @@ export const index = [
             pageTitle: "Vasyl Khorev",
             hiim: "Hi, I'm",
             myname: "Vasyl Khorev",
-            welcometext: "Welcome to my personal website. I am a student of Informatics at the Faculty of Science at the Pavol Jozef Šafárik University in Košice. I am interested in web development and machine learning. Come and see my thesis.",
+            welcometext: "I am interested in web development and machine learning. ",
             aboutme: "About me",
         }
     },

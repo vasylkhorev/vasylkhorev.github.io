@@ -15,3 +15,5 @@ export const UNIVERSITY = {
     en: "https://www.upjs.sk/en/",
     ua: "https://www.upjs.sk/uk/"
 }
+
+export const AIS_URL = "https://www.ais2.sk"

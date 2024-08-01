@@ -1,0 +1,15 @@
+---
+import {FACULTY, PUBLIC_INFORMATICS_URL, UNIVERSITY} from "../i18n/urls";
+import {getTranslationSkills} from "../i18n/translations/skills";
+
+const {lang} = Astro.props;
+
+const t = getTranslationSkills(lang)
+---
+<div class="text-base sm:text-2xl">
+    <ul class="list-outside list-disc" >
+        <li>{t["webdevelopment"]}: {t["proficientin"]}</li>
+        <li>Spring Java: {t['springjava']} </li>
+        <li>{t['android']}: {t['androidText']}</li>
+    </ul>
+</div>

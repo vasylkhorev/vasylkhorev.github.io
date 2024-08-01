@@ -1,0 +1,83 @@
+---
+import type {MarkdownHeading} from 'astro';
+import TOCHeading from "./TOCHeading.astro";
+import {ViewTransitions} from 'astro:transitions';
+
+type HeadingWithSubheadings = MarkdownHeading & {
+    subheadings: MarkdownHeading[];
+};
+
+function buildToc(headings) {
+    if (!headings) return [];
+
+    let minus = headings[0].depth;
+    for (const heading of headings) {
+        minus = Math.min(minus, heading.depth);
+    }
+
+    const toc = [];
+    const parentHeadings = new Map();
+    headings.forEach((h) => {
+        const heading = {...h, subheadings: []};
+        parentHeadings.set(heading.depth, heading);
+        if (heading.depth - minus === 0) {
+            toc.push(heading);
+        } else {
+            parentHeadings.get(heading.depth - 1).subheadings.push(heading);
+        }
+    });
+    return toc;
+}
+
+
+const {headings} = Astro.props;
+---
+
+<html lang="en">
+<head>
+    <title>My Homepage</title>
+</head>
+</html>
+
+<div class="dark:text-gray-300">
+    <div class="font-extrabold">
+        Table of Contents
+    </div>
+    {buildToc(headings).map((heading) => (
+            <TOCHeading heading={heading}/>
+    ))
+    }
+</div>
+
+
+<script>
+    document.addEventListener('scroll', () => {
+        const handleScroll = () => {
+            const sectionHeadings = document.querySelectorAll(
+                'h1, h2, h3, h4, h5, h6',
+            );
+
+            const passedHeadings = Array.from(sectionHeadings).filter((el) => {
+                const elBox = el?.getBoundingClientRect();
+                return elBox && elBox?.top <= 50;
+            });
+
+            const previouslyActivatedItem =
+                document.querySelector('.active-toc-item');
+
+            previouslyActivatedItem?.classList.remove('active-toc-item');
+
+            if (passedHeadings.length) {
+                const headingId = `#${passedHeadings[passedHeadings.length - 1].id}`;
+                const tocItem = document.querySelector(`a[href="${headingId}"]`);
+                tocItem?.classList.add('active-toc-item');
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        handleScroll();
+    }, {once: true});
+
+
+</script>
+

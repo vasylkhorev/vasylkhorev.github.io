@@ -1,35 +1,42 @@
 ---
 import {dateOptions, getLocale} from "../i18n/utils";
-const {title, date, post, lang} = Astro.props;
+import TOC from "./TOC.astro";
+const {title, date, lang, headings, summary} = Astro.props;
+
 ---
-<body class="bg-white text-black dark:text-amber-50 dark:bg-gray-900">
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+</style>
+
 <div class="flex justify-center items-center my-14">
-    <div class="w-5/6 sm:w-1/2">
-        <div class="text-center dark:text-gray-400 font-thin text-xl">{new Date(date).toLocaleDateString(getLocale(lang), dateOptions)}</div>
-        <div class="mt-2 mb-10 text-3xl sm:text-6xl dark:text-amber-50 font-extrabold text-center">{title}</div>
-        <div class="text-lg sm:text-xl mb-15 dark:text-gray-400
-                    prose-h1:text-5xl sm:prose-h1:text-7xl  prose-h1:my-10
-                    prose-h2:text-4xl sm:prose-h2:text-6xl  prose-h2:my-8 prose-headings:dark:text-amber-50
-                    prose-h3:text-3xl sm:prose-h3:text-5xl  prose-h3:my-7
-                    prose-h4:text-2xl sm:prose-h4:text-4xl  prose-h4:my-7
-                    prose-h5:text-xl sm:prose-h5:text-3xl  prose-h5:my-7
-                    prose-h6:text-l sm:prose-h6:text-2xl  prose-h6:my-2
-                    prose-a:underline hover:prose-a:text-cyan-600
+    <div class="w-5/6 sm:w-1/2 ">
+        <div class="text-center dark:text-gray-400 font-semibold text-xl">{new Date(date).toLocaleDateString(getLocale(lang), dateOptions)}</div>
+        <div class="mt-2 text-black dark:text-white text-3xl sm:text-5xl font-extrabold text-center">{title}</div>
+        <div class="mt-10 flex justify-center items-center">
+            <div class="self-center text-pretty sm:w-2/3 dark:text-gray-400 prose-xl">{summary}</div>
+        </div>
+
+
+        <div class="mr-0 sm:mr-[75dvw] w-full sm:w-[45dvw] mt-10 prose text-black dark:text-white dark:prose-invert mb-15 sm:prose-xl
+                    prose-pre:rounded-3xl
+                    special-class-for-inline-code prose-ic:p-1.5 prose-ic:font-normal prose-ic:bg-gray-200 dark:prose-ic:bg-gray-800 prose-ic:rounded
+                    prose-ic:before:content-none prose-ic:after:content-none
+                    prose-img:overflow-x-auto
                     prose-a:break-all
-                    prose-ul:list-disc prose-ul:ml-10 prose-li:mt-1
-                    prose-hr:my-10 prose-hr:rounded prose-hr:border-t-4
-                    prose-blockquote:border-l-4 prose-blockquote:pl-5 prose-blockquote:my-10 prose-blockquote:border-gray-400
-                    prose-ol:list-decimal prose-ol:ml-10
-                    prose-table:my-10 prose-table:font-bold prose-th:px-5 prose-td:px-5 prose-td:pt-2 prose-th:border-b-2 prose-table:w-[75dvw] sm:prose-table:w-full prose-table:text-base prose-table:table-fixed sm:prose-table:table-auto sm:prose-table:table- sm:prose-table:text-xl
-                    special-class-for-inline-code prose-inline-code:before:content-['`'] prose-inline-code:after:content-['`'] prose-code:font-bold dark:prose-code:text-white
-                    prose-pre:rounded-xl prose-pre:my-10 prose-pre:p-3 prose-pre:text-sm sm:prose-pre:text-base prose-pre:w-[83dvw] sm:prose-pre:w-full
-                    prose-pre:bg-gray-700 prose-pre:overflow-x-auto prose-pre:
-                    prose-iframe:my-10">
+                    prose-pre:w-[80dvw] sm:prose-pre:w-full
+                    prose-table:w-[80dvw] prose-table:table-fixed sm:prose-table:w-full sm:prose-table:table-auto
+                    prose-table:overflow-x-auto relative mx-auto">
+            <hr class="border-b-0 border-gray-400 mt-10"/>
+            <aside class="absolute left-full w-96 h-full hidden sm:block">
+                <div class="sticky ml-20 top-10">
+                    <TOC headings={headings}/>
+                </div>
+            </aside>
             <slot/>
         </div>
+
     </div>
 </div>
-</body>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.css"
       integrity="sha384-NFTC4wvyQKLwuJ8Ez9AvPNBv8zcC2XaQzXSMvtORKw28BdJbB2QE8Ka+OyrIHcQJ" crossorigin="anonymous">
