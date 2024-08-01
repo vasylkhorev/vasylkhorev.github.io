@@ -1,18 +1,13 @@
 ---
 import "../styles.css";
 import {getLangFromUrl} from "../i18n/utils";
-import {getTranslationIndex, index} from "../i18n/translations";
-import Index from "./[lang]/index.astro";
+import {index} from "../i18n/translations";
 let lang: string = getLangFromUrl(Astro.url);
 
 // Get the translation for the current language
-const t = getTranslationIndex(lang)
 export function getStaticPaths() {
     return index.map(t => ({params: t.params}));
     }
-
----
-<Index/>
 
 ---
 <script is:inline>
