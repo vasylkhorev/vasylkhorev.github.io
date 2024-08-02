@@ -4,7 +4,7 @@ export const experience = [
             lang: 'en',
             now: "Now",
             pt_developer: "Part-time developer",
-            ais: "University information system used in Slovakia. Currently, AiS2 is implemented at 16 universities in Slovakia and is available to more than 100,000 students of Slovak schools, which is more than 50% of all students of Slovak universities."
+            ais: "University information system used in Slovakia, that is currently implemented at 16 universities in Slovakia and is available to more than 100,000 students of Slovak schools."
         }
     },
     {
