@@ -349,7 +349,6 @@ café owner to stimulate the sale of both products at the same time, e.g. by dis
 [[Top]](#top)
 
 ## Bibliography
-
 [^1]:Agrawal, Rakesh and Ramakrishnan Srikant, 1994. Fast Algorithms for Mining Association Rules in Large Databases.
 In:
 Proceedings of the 20th International Conference on Very Large Data Bases. San Francisco: Morgan Kaufmann Publishers

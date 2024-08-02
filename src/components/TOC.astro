@@ -10,6 +10,7 @@ type HeadingWithSubheadings = MarkdownHeading & {
 function buildToc(headings) {
     if (!headings) return [];
 
+    headings = headings.filter((h) => h.text !== "Footnotes");
     let minus = headings[0].depth;
     for (const heading of headings) {
         minus = Math.min(minus, heading.depth);
