@@ -12,7 +12,7 @@ dataset.
 
 ## What is an association?
 
-Wikipedia gives us such definiton of association:
+Wikipedia gives us such definition of association:
 > any relationship between two measured quantities that renders them statistically dependent (but not necessarily causal
 > or a correlation)
 

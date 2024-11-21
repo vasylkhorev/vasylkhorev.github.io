@@ -1,5 +1,5 @@
 ---
-import {getTranslationThesis, thesis} from "../../i18n/translations/thesis";
+import {getTranslationBachelorThesis, bachelorThesis} from "../../i18n/translations/bachelor-thesis";
 import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
 import "../../styles.css";
@@ -7,9 +7,9 @@ import {getLangFromUrl} from "../../i18n/utils";
 const lang  = getLangFromUrl(Astro.url);
 
 // Get the translation for the current language
-const t = getTranslationThesis(lang);
+const t = getTranslationBachelorThesis(lang);
 export function getStaticPaths() {
-    return thesis.map(t => ({params: t.params}));
+    return bachelorThesis.map(t => ({params: t.params}));
 }
 ---
 
@@ -30,27 +30,27 @@ export function getStaticPaths() {
     <div class="mx-10 items-center sm:w-2/3">
         <h1 class="text-3xl sm:text-7xl text-center font-bold font-sans pt-10 sm:pt-32">{t["thesisTitle"]}</h1>
         <p class=" text-s sm:text-3xl mt-10 sm:mt-32 font-mono"><span class="font-semibold">{t["author.label"]}:</span> {t["thesisAuthor"]}</p>
-        <p class=" text-s sm:text-3xl mt-2 font-mono"><span class="font-semibold">{t["thesis.supervisor"]}:</span> prof.
-            RNDr. Stanislav Krajči,
+        <p class=" text-s sm:text-3xl mt-2 font-mono"><span class="font-semibold">{t["thesis.supervisor"]}:</span> doc. RNDr. Ľubomír Antoni,
             PhD.</p>
-        <!--<p class="text-s sm:text-3xl mt-2 font-mono"><span class="font-semibold">{t["bachelorThesis.consultant"]}:</span> </p>-->
+        <p class="text-s sm:text-3xl mt-2 font-mono"><span class="font-semibold">{t["thesis.consultant"]}:</span> prof. RNDr. Stanislav Krajči,
+            PhD.</p>
     </div>
     <div class="mt-10 inline-flex sm:justify-start w-4/5 sm:w-2/3 sm:mt-20 gap-5 sm:gap-10">
-        <a href="/diplomova_praca/prezentacia.pdf">
+           <a href="/prezentacia_obhajoba.pdf">
                <button type="button"
                        class="font-mono  block rounded-md bg-gray-300 dark:bg-gray-800 px-3 py-2 text-base font-medium hover:bg-gray-400 dark:hover:bg-gray-700">
                    {t["presentation"]}</button>
            </a>
-        <!--<a href="/esej.pdf">-->
-        <!--    <button type="button"-->
-        <!--            class="font-mono  block rounded-md bg-gray-300 dark:bg-gray-800 px-3 py-2 text-base font-medium hover:bg-gray-400 dark:hover:bg-gray-700">-->
-        <!--        {t["essay"]}</button>-->
-        <!--</a>-->
-        <!--<a href="/bakalarska_praca.pdf">-->
-        <!--    <button type="button"-->
-        <!--            class="font-mono block rounded-md bg-gray-300 dark:bg-gray-800 px-3 py-2 text-base font-medium hover:bg-gray-400 dark:hover:bg-gray-700">-->
-        <!--        {t["thesis"]}</button>-->
-        <!--</a>-->
+           <a href="/esej.pdf">
+               <button type="button"
+                       class="font-mono  block rounded-md bg-gray-300 dark:bg-gray-800 px-3 py-2 text-base font-medium hover:bg-gray-400 dark:hover:bg-gray-700">
+                   {t["essay"]}</button>
+           </a>
+           <a href="/bakalarska_praca.pdf">
+               <button type="button"
+                       class="font-mono block rounded-md bg-gray-300 dark:bg-gray-800 px-3 py-2 text-base font-medium hover:bg-gray-400 dark:hover:bg-gray-700">
+                   {t["thesis"]}</button>
+           </a>
     </div>
 </div>
 <div class="mt-10 sm:mt-20 flex items-center justify-center">
@@ -62,18 +62,15 @@ export function getStaticPaths() {
                 <li>{t["goals.2"]}
                 </li>
                 <li>{t["goals.3"]}</li>
-                <li>{t["goals.4"]}</li>
             </ul>
         </div>
 
-        <div class="mt-10 text-2xl sm:text-3xl sm:mt-20 font-bold text-center"><a class="underline underline-offset-8 decoration-2"
-               >{t["whatisAR"]}</a></div>
+        <div class="mt-10 text-2xl sm:text-3xl sm:mt-20 font-bold text-center"><a class="underline underline-offset-8 decoration-2 hover:decoration-4"
+                href=`${t["ARwiki"]}`>{t["whatisAR"]}</a></div>
         <div class="flex justify-center flex-col sm:text-2xl my-10">
-            <p class="mb-4">{t["whatisAR.answer1"]}</p>
-            <p class="mb-4">{t["whatisAR.answer2"]}</p>
-            <p class="mb-4">{t["whatisAR.answer3"]}</p>
-            <p class="mb-4">{t["whatisAR.answer4"]}</p>
-            <p class="mb-4">{t["whatisAR.answer5"]}</p>
+            {t["whatisAR.answer1"]}
+            \[ \lbrace {t["cocaCola"]}  \rbrace \Rightarrow \lbrace {t["chips"]} \rbrace \]
+            {t["whatisAR.answer2"]}
         </div>
     </div>
 </div>

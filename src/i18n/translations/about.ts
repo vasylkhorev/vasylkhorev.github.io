@@ -11,7 +11,7 @@ export const about = [
             uni:"Pavol Jozef Šafárik University in Košice",
             iminterested :"I am interested in web development and ",
             machinelearning: "machine learning",
-            comeandsee:"Come and see my thesis",
+            comeandsee:"Come and see my bachelorThesis",
             skills: "Skills",
             experience: "Experience",
 

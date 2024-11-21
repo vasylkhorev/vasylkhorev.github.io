@@ -1,7 +1,8 @@
 ---
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import {getLangFromUrl, replaceLangInUrl, useTranslations} from '../i18n/utils';
 import LangPicker from "./LangPicker.astro";
 import ThemeSelector from "./ThemeSelector.astro";
+import {languages} from "../i18n/ui";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -13,25 +14,17 @@ const t = useTranslations(lang);
             <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 <!-- Mobile menu button-->
                 <button type="button"
-                        class="relative  inline-flex items-center justify-center rounded-md p-2 text-black dark:text-gray-400 bg-gray-300 dark:bg-gray-700 hover:text-white"
+                        class="relative inline-flex items-center justify-center rounded-md p-2 text-black dark:text-gray-400 bg-gray-300 dark:bg-gray-700 hover:text-white"
                         aria-controls="mobile-menu" aria-expanded="false" id="mobile-menu-button">
                     <span class="absolute -inset-0.5"></span>
                     <span class="sr-only">Open main menu</span>
-                    <!--
-                      Icon when menu is closed.
-
-                      Menu open: "hidden", Menu closed: "block"
-                    -->
+                    <!-- Icon when menu is closed -->
                     <svg class="block h-6 w-6 menu-icon stroke-black dark:stroke-gray-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                          aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round"
                               d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
                     </svg>
-                    <!--
-                      Icon when menu is open.
-
-                      Menu open: "block", Menu closed: "hidden"
-                    -->
+                    <!-- Icon when menu is open -->
                     <svg class="hidden h-6 w-6 close-icon stroke-black dark:stroke-gray-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                          aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
@@ -40,21 +33,42 @@ const t = useTranslations(lang);
             </div>
             <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div class="flex flex-shrink-0 items-center">
-                    <!--<img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company">-->
+                    <!--<img class="h-8 w-auto" src="logo.svg" alt="Your Company">-->
                 </div>
                 <div class="hidden sm:ml-6 sm:block">
                     <div class="flex space-x-4 font-bold">
-                        <a href={`/${lang}/`}
-                           class="rounded-md font px-3 py-2 hover:bg-gray-400 dark:hover:bg-gray-700 "
+                        <a href={`/${lang}/`} class="rounded-md px-3 py-2 hover:bg-gray-400 dark:hover:bg-gray-700 "
                            aria-current="page">{t('nav.home')}</a>
-                        <a href={`/${lang}/thesis/`}
-                           class="rounded-md px-3 py-2 hover:bg-gray-400 dark:hover:bg-gray-700 "
-                           aria-current="page">{t('nav.thesis')}</a>
-                        <a href={`/${lang}/blog/`}
-                           class="rounded-md px-3 py-2 hover:bg-gray-400 dark:hover:bg-gray-700 "
+                        <details class="group relative rounded-lg">
+                            <summary class="select-none accordion link px-3 py-2 hover:bg-gray-400 dark:hover:bg-gray-700 flex cursor-pointer items-center rounded-md ">
+                                {t("nav.thesis")}
+                                <span class="sr-only">Open resources menu</span>
+                                <svg width="22" height="13" viewBox="0 0 22 13" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg"
+                                     class="ml-2 inline-block size-3 rotate-0 transition-transform group-open:-rotate-180 duration-100"
+                                     aria-hidden="true">
+                                    <path d="M1 1L11 11L21 1" stroke="currentColor" stroke-width="2"></path>
+                                </svg>
+                            </summary>
+                            <ul class="flex flex-col absolute left-0 top-full translate-y-2 min-w-52 bg-gray-100 rounded-b-md dark:bg-gray-800 p-1 shadow-lg invisible  group-open:visible origin-top scale-95 group-open:scale-100 opacity-0 group-open:opacity-100 transition-all duration-300">
+                                <li>
+                                    <a href={`/${lang}/thesis/`} data-astro-prefetch=""
+                                       class="flex items-center gap-2 rounded-md p-3 leading-none transition hover:bg-gray-400 dark:hover:bg-gray-700">
+                                        {t("nav.master-thesis")}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href={`/${lang}/bachelor-thesis/`} data-astro-prefetch=""
+                                       class="flex items-center gap-2 rounded-md p-3 leading-none transition hover:bg-gray-400 dark:hover:bg-gray-700">
+                                        {t("nav.bachelor-thesis")}
+                                    </a>
+                                </li>
+                            </ul>
+                        </details>
+
+                        <a href={`/${lang}/blog/`} class="rounded-md px-3 py-2 hover:bg-gray-400 dark:hover:bg-gray-700 "
                            aria-current="page">{t('nav.blog')}</a>
-                        <a href={`/${lang}/about/`}
-                           class="rounded-md px-3 py-2 hover:bg-gray-400 dark:hover:bg-gray-700 "
+                        <a href={`/${lang}/about/`} class="rounded-md px-3 py-2 hover:bg-gray-400 dark:hover:bg-gray-700 "
                            aria-current="page">{t('nav.about')}</a>
                     </div>
                 </div>
@@ -64,9 +78,8 @@ const t = useTranslations(lang);
                     <div class="">
                         <!-- aligned right-->
                         <LangPicker/>
-
                     </div>
-                    <div class="flex items-center" >
+                    <div class="flex items-center">
                         <ThemeSelector/>
                     </div>
                 </div>
@@ -76,17 +89,34 @@ const t = useTranslations(lang);
         <!-- Mobile menu, show/hide based on menu state. -->
         <div class="sm:hidden hidden" id="mobile-menu">
             <div class="space-y-1 px-2 pb-3 pt-2">
-                <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                <!-- <a href={`/${lang}/`} class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"-->
-                <!--aria-current="page">Dashboard</a>-->
-                <a href={`/${lang}/`} aria-current="page"
-                   class="block rounded-md px-3 py-2 text-base font-medium text-black dark:text-gray-300 bg-gray-300 dark:bg-gray-900">{t("nav.home")}</a>
-                <a href={`/${lang}/thesis/`}
-                   class="block rounded-md px-3 py-2 text-base font-medium text-black dark:text-gray-300 bg-gray-300 dark:bg-gray-900">{t("nav.thesis")}</a>
-                <a href={`/${lang}/blog/`}
-                   class="block rounded-md px-3 py-2 text-base font-medium text-black dark:text-gray-300 bg-gray-300 dark:bg-gray-900 hover:text-white">{t("nav.blog")}</a>
-                <a href={`/${lang}/about/`}
-                   class="block rounded-md px-3 py-2 text-base font-medium text-black dark:text-gray-300 bg-gray-300 dark:bg-gray-900 hover:text-white">{t("nav.about")}</a>
+                <a href={`/${lang}/`} class="block rounded-md px-3 py-2 text-base font-medium text-black dark:text-gray-300 bg-gray-300 dark:bg-gray-900">{t("nav.home")}</a>
+
+                <!-- Accordion for Thesis -->
+                <details class="mb-2 rounded-md">
+                    <summary class="flex items-center justify-between cursor-pointer rounded-md px-3 py-2 text-base font-medium text-black dark:text-gray-300 bg-gray-300 dark:bg-gray-900">
+                        {t("nav.thesis")}
+                        <svg width="22" height="13" viewBox="0 0 22 13" fill="none" xmlns="http://www.w3.org/2000/svg"
+                             class="transform rotate-0 transition-transform group-open:rotate-180" aria-hidden="true">
+                            <path d="M1 1L11 11L21 1" stroke="currentColor" stroke-width="2"></path>
+                        </svg>
+                    </summary>
+                    <ul class="my-2 flex flex-col bg-gray-200 dark:bg-gray-900 p-2 rounded-md">
+                        <li>
+                            <a href={`/${lang}/thesis/`} class="block rounded-md px-3 py-2 text-black font-medium  dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600">
+                                {t("nav.master-thesis")}
+                            </a>
+                        </li>
+                        <li>
+                            <a href={`/${lang}/bachelor-thesis/`} class="block rounded-md px-3 py-2 font-medium text-black dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600">
+                                {t("nav.bachelor-thesis")}
+                            </a>
+                        </li>
+                    </ul>
+                </details>
+
+
+                <a href={`/${lang}/blog/`} class="block rounded-md px-3 py-2 text-base font-medium text-black dark:text-gray-300 bg-gray-300 dark:bg-gray-900">{t("nav.blog")}</a>
+                <a href={`/${lang}/about/`} class="block rounded-md px-3 py-2 text-base font-medium text-black dark:text-gray-300 bg-gray-300 dark:bg-gray-900">{t("nav.about")}</a>
             </div>
         </div>
     </div>
