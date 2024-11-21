@@ -42,7 +42,7 @@
 Website is available on [vasylkhorev.github.io](https://vasylkhorev.github.io/).
 
 
-### Built With
+## Built With
 
 * [![Astro][Astro]][Astro-url]
 * [![Tailwind CSS][Tailwind CSS]][tailwind-url]
