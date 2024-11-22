@@ -2,7 +2,7 @@ export const thesis = [
     {
         params: {
             lang: 'en',
-            thesisTitle: "Fuzzification of Conway's Game of Life",
+            thesisTitle: "Fuzzy Life",
             thesisAuthor: "Vasyl Khorev",
             pageTitle: "Master's thesis",
             "author.label": "Author",
@@ -16,7 +16,7 @@ export const thesis = [
             "goals.2": "Prepare a software environment for editing and observing the game's dynamics.",
             "goals.3": "Find meaningful sets of fuzzification parameters.",
             "goals.4": "Search for configurations with predefined behavior (especially oscillation), possibly even characterizing them exactly.",
-            "whatisAR": "Fuzzification of Conway's Game of Life?",
+            "whatisAR": "Fuzzification of Conway's Game of Life",
             "whatisAR.answer1": "Conway's Game of Life is one of the most well-known examples of cellular automata. It is a simple model where each cell on an infinite 2D grid can either be alive or dead. Its state changes depending on the state of its eight neighbors and predefined rules. Despite these rules being extremely simple, they lead to fascinating dynamic patterns simulating seemingly 'living' behavior.",
             "whatisAR.answer2": "These simple principles lead to complex structures such as oscillators (patterns that repeat periodically), 'spaceships' (patterns that move across the grid), or even stationary structures known as stable objects. Though the Game of Life may seem like a simple simulation, it is, in fact, computationally complete, meaning it can simulate any computation. Some researchers have even demonstrated that functional logic circuits and simple computers can be created in the Game of Life.",
             "whatisAR.answer3": "However, when exploring these patterns, the question arises: What if we move away from the binary system (alive/dead) and introduce fuzzy logic into the game? Such fuzzification could open up new possibilities for exploring dynamic processes and perhaps uncover patterns that do not appear in the classic game. This is a natural approach because in real life, states are often continuous and fluid, while sharp binary divisions are more of an exception than a rule.",
