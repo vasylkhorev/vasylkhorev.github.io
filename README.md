@@ -77,4 +77,4 @@ If you have any questions or feedback, please feel free to reach out to me at [k
 [Astro]: https://img.shields.io/badge/Astro-000000?style=for-the-badge&logo=astro&logoColor=white
 [astro-url]: [https://nextjs.org/](https://astro.build/)
 [Tailwind CSS]: https://img.shields.io/badge/Tailwind_CSS-20232A?style=for-the-badge&logo=tailwind-css&logoColor=61DAFB
-[tailwind-url]: https://reactjs.org/
+[tailwind-url]: https://tailwindcss.com/
