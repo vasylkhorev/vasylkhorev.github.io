@@ -2,9 +2,9 @@ export const index = [
     {
         params: {
             lang: 'en',
-            pageTitle: "Vasyl Khorev",
+            pageTitle: "Vasiľ Chorev",
             hiim: "Hi, I'm",
-            myname: "Vasyl Khorev",
+            myname: "Vasiľ Chorev",
             welcometext: "I am interested in web development and machine learning. ",
             aboutme: "About me",
         }
@@ -12,9 +12,9 @@ export const index = [
     {
         params: {
             lang: 'sk',
-            pageTitle: "Vasyl Khorev",
+            pageTitle: "Vasiľ Chorev",
             hiim: "Ahoj, volám sa",
-            myname: "Vasyl Khorev",
+            myname: "Vasiľ Chorev",
             welcometext: "Vitajte na mojej osobnej webovej stránke. Som študentom informatiky na Prírodovedeckej fakulte Univerzity Pavla Jozefa Šafárika v Košiciach. Zaujímam sa o vývoj webových stránok a strojové učenie. Pozrite si moju bakalársku prácu.",
             aboutme: "O mne",
         }

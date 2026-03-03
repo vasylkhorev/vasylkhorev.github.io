@@ -3,7 +3,7 @@ export const bachelorThesis = [
         params: {
             lang: 'en',
             thesisTitle: "Methods of association rules and their applications",
-            thesisAuthor: "Vasyl Khorev",
+            thesisAuthor: "Vasiľ Chorev",
             pageTitle: "Thesis",
             "author.label": "Author",
             "thesis.supervisor": "Thesis supervisor",
@@ -29,7 +29,7 @@ export const bachelorThesis = [
         params: {
             lang: 'sk',
             thesisTitle: "Metódy asociačných pravidiel a ich aplikácie",
-            thesisAuthor: "Vasyl Khorev",
+            thesisAuthor: "Vasiľ Chorev",
             pageTitle: "Bakalárska práca",
             "author.label": "Autor",
             "thesis.supervisor": "Vedúci práce",

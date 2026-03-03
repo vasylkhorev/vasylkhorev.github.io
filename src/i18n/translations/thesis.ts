@@ -3,7 +3,7 @@ export const thesis = [
         params: {
             lang: 'en',
             thesisTitle: "Fuzzy Life",
-            thesisAuthor: "Vasyl Khorev",
+            thesisAuthor: "Vasiľ Chorev",
             pageTitle: "Master's thesis",
             "author.label": "Author",
             "thesis.supervisor": "Thesis supervisor",
@@ -29,7 +29,7 @@ export const thesis = [
         params: {
             lang: 'sk',
             thesisTitle: "Fuzzy Life",
-            thesisAuthor: "Vasyl Khorev",
+            thesisAuthor: "Vasiľ Chorev",
             pageTitle: "Diplomová práca",
             "author.label": "Autor",
             "thesis.supervisor": "Vedúci práce",
